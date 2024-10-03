@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <fieldset>
+        <h2>WELCOME TO BURGER HUB!!</h2>
+
+        <form>
+            <div class="container">
+                <div id="dd"></div>
+                <div id="burr"></div>
+                <div id="pa"></div>
+                <div id="ch"></div>
+                <div id="d4"></div>
+            </div>
+            <div class="container2">
+                <h3>Base Price: 50/- per burger</h3>
+                <br>
+                <label>Aloo tikki:(10/- per tikki slice)</label>
+                <br>
+                <br>
+                <div class="div1">
+                    <input type="button" value="Remove" onclick="a2();rmv();total()">
+                    <input type="text" min="0" id="aT" value="0">
+                    <input type="button" value="Add" onclick="a1();addChild();total()">
+                    <br>Price:
+                    <input type="text" id="aloprice">
+                </div>
+                <br>
+                <label>Paneer:(20/-per slice)</label>
+                <br>
+                <br>
+                <div class="div2">
+                    <input type="button" value="Remove" onclick="p2();rmv1();total()">
+                    <input type="text" id="pan" value="0">
+                    <input type="button" value="Add" onclick="p1();addChild1();total()">
+                    <br>Price:
+                    <input type="text" id="panprice">
+                    <br>
+                </div>
+                <br>
+                <label>Cheese:(30/-per slice)</label>
+                <br>
+                <br>
+                <div class="div3">
+                    <input type="button" value="Remove" onclick="c2();rmv2();total()">
+                    <input type="text" id="cheese" value="0">
+                    <input type="button" value="Add" onclick="c1();addChild2();total()">
+                    <br>Price:
+                    <input type="text" id="cheprice">
+                </div>
+                <br>
+                <div>
+                    <label>Burger Amount:</label>
+                    <br>
+                    <br>
+                    <input type="text" id="burg-amount">
+                </div>
+                <br>
+                <label>Burger Quantity:</label>
+                <br>
+                <br>
+                <div class="div4">
+                    <input type="button" value="Remove" onclick="s2();total()">
+                    <input type="text" id="quantity" value="1">
+                    <input type="button" value="Add" onclick="s1();total()">
+                </div>
+                <br>
+                <div>
+                </div>
+            </div>
+        </form>
+        <div class="div5">
+            Total Amount:in Rs.
+            <input type="text" value="50" id="total">
+        </div>
+    </fieldset>
+    <script>
+
+        function s1() {
+            value = 0;
+            value = parseInt(document.getElementById("quantity").value);
+            value = value + 1;
+            document.getElementById("quantity").value = value;
+        }
+        function s2() {
+            value = 0;
+            value = parseInt(document.getElementById("quantity").value);
+            value = value - 1;
+            document.getElementById("quantity").value = value;
+        }
+        function c1() {
+            value = 0;
+            value = parseInt(document.getElementById("cheese").value);
+            value = value + 1;
+            document.getElementById("cheese").value = value;
+            document.getElementById("cheprice").value = value * 30;
+
+        }
+        function c2() {
+            value = 0;
+            value = parseInt(document.getElementById("cheese").value);
+            value = value - 1;
+            document.getElementById("cheese").value = value;
+            document.getElementById("cheprice").value = value * 30;
+
+        }
+        function a1() {
+            value = 0;
+            value = parseInt(document.getElementById("aT").value);
+            value = value + 1;
+            document.getElementById("aT").value = value;
+            document.getElementById("aloprice").value = value * 10;
+
+        }
+        function a2() {
+            value = 0;
+            value = parseInt(document.getElementById("aT").value);
+            value = value - 1;
+            document.getElementById("aT").value = value;
+            document.getElementById("aloprice").value = value * 10;
+
+        }
+        function p1() {
+            value = 0;
+            value = parseInt(document.getElementById("pan").value);
+            value = value + 1;
+            document.getElementById("pan").value = value;
+            document.getElementById("panprice").value = value * 20;
+        }
+        function p2() {
+            value = 0;
+            value = parseInt(document.getElementById("pan").value);
+            value = value - 1;
+            document.getElementById("pan").value = value;
+            document.getElementById("panprice").value = 20 * value;
+        }
+        function total() {
+            alonum = document.getElementById("aT").value * 10;
+            pannum = document.getElementById("pan").value * 20;
+            cheenum = document.getElementById("cheese").value * 30;
+            buqa = document.getElementById("quantity").value;
+            Burgeramount = alonum + pannum + cheenum + 50;
+            document.getElementById("burg-amount").value = Burgeramount;
+            Totalprice = Burgeramount * buqa;
+            document.getElementById("total").value = Totalprice;
+        }
+        function addChild() {
+            var parent = document.getElementById('burr');
+            var newChild = '<div style="background-color:brown;margin:1px;height:5px;width:214px;"></div>';
+            parent.insertAdjacentHTML('beforeend', newChild);
+        }
+        function addChild1() {
+            var p = document.getElementById("pa");
+            var newc = '<div style="background-color:wheat;margin:1px;height:5px;width:214px;"></div> ';
+            p.insertAdjacentHTML('beforeend', newc);
+        }
+        function addChild2() {
+            var c = document.getElementById("ch");
+            var newch = '<div style="background-color:yellow;margin:1px;height:5px;width:214px;"></div> ';
+            c.insertAdjacentHTML('beforeend', newch);
+        }
+        function rmv() {
+            var gfg_down =
+                document.getElementById("burr");
+            gfg_down.removeChild(gfg_down.firstElementChild);
+        }
+        function rmv1() {
+            var gfg =
+                document.getElementById("pa");
+            gfg.removeChild(gfg.firstElementChild);
+        }
+        function rmv2() {
+            var gf =
+                document.getElementById("ch");
+            gf.removeChild(gf.firstElementChild);
+        }
+
+
+    </script>
+</body>
+
+</html>
